@@ -31,6 +31,9 @@ namespace BizTalkComponents.Utils.ContextPropertyHelpers
             {
                 throw new ArgumentException("The property path {0} is not valid",property);
             }
+
+            PropertyNamespace = property.Split('#')[0];
+            PropertyName = property.Split('#')[1];
         }
 
         public string PropertyName { get; private set; }
