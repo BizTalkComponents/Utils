@@ -5,7 +5,7 @@ namespace BizTalkComponents.Utils.ContextPropertyHelpers
 {
     public class ContextPropertyHelper
     {
-        public void CopyContextProperty(IBaseMessage msg, ContextProperty source, ContextProperty destination)
+        public static void CopyContextProperty(IBaseMessage msg, ContextProperty source, ContextProperty destination)
         {
             if (source == null)
             {
