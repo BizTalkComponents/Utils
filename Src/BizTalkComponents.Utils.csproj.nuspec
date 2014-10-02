@@ -5,9 +5,6 @@
     <version>1.0.0</version>
     <authors>Robin Hultman</authors>
     <owners>ibizsolutions robinhultman</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A set of utilities for BizTalk pipeline component development.</description>
     <releaseNotes>Initial release</releaseNotes>
