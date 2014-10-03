@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextPropertyHelpers\ContextExtensions.cs" />
     <Compile Include="ContextPropertyHelpers\ContextProperty.cs" />
     <Compile Include="ContextPropertyHelpers\ContextPropertyHelper.cs" />
     <Compile Include="ContextPropertyHelpers\FileProperties.cs" />
