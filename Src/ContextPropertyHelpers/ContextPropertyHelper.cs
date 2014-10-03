@@ -17,14 +17,14 @@ namespace BizTalkComponents.Utils.ContextPropertyHelpers
                 throw new ArgumentNullException("destination");
             }
 
-            var sourceValue = msg.Context.Read(source.PropertyName, source.PropertyNamespace) as string;
-
-            if (sourceValue == null)
+            string sourceValue;
+            
+            if (msg.Context.TryRead(source, out sourceValue))
             {
                 throw new InvalidOperationException("Could not find the specified source property in BizTalk context.");
             }
-            
-            msg.Context.Promote(destination.PropertyName, destination.PropertyNamespace,sourceValue);
+
+            msg.Context.Promote(destination,sourceValue);
         }
     }
 }
