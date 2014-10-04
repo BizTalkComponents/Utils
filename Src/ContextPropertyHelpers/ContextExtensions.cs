@@ -13,5 +13,10 @@ namespace BizTalkComponents.Utils.ContextPropertyHelpers
         {
             ctx.Promote(property.PropertyName,property.PropertyNamespace,val);
         }
+
+        public static void Write(this IBaseMessageContext ctx, ContextProperty property, string val)
+        {
+            ctx.Write(property.PropertyName, property.PropertyNamespace,val);
+        }
     }
 }
