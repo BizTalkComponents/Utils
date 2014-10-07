@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils", "Src\BizTalkComponents.Utils.csproj", "{AE7EE177-5293-4DEE-AB4B-FDE44DE4B894}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FFFDE081-1DA6-44F8-A018-A86DF4CE3111}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -10,10 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FFFDE0
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{8E8AB1D2-982D-473C-8C3A-D63520723B68}"
-	ProjectSection(SolutionItems) = preProject
-		Dependencies\Microsoft.BizTalk.Pipeline.dll = Dependencies\Microsoft.BizTalk.Pipeline.dll
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils", "Src\Utils\BizTalkComponents.Utils.csproj", "{AE7EE177-5293-4DEE-AB4B-FDE44DE4B894}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
