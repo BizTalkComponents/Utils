@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="ContextPropertyHelpers\ContextExtensions.cs" />
     <Compile Include="ContextPropertyHelpers\ContextProperty.cs" />
-    <Compile Include="ContextPropertyHelpers\ContextPropertyHelper.cs" />
     <Compile Include="ContextPropertyHelpers\FileProperties.cs" />
     <Compile Include="ContextPropertyHelpers\SSOTicketProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
