@@ -54,6 +54,7 @@
     <Compile Include="ContextPropertyHelpers\ContextProperty.cs" />
     <Compile Include="ContextPropertyHelpers\FileProperties.cs" />
     <Compile Include="ContextPropertyHelpers\SSOTicketProperties.cs" />
+    <Compile Include="ContextPropertyHelpers\SystemProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBagHelpers\PropertyBagHelper.cs" />
   </ItemGroup>
