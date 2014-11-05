@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BizTalkComponents.Utils</id>
-    <version>1.0.4.3</version>
+    <version>1.0.5.0</version>
     <authors>Robin Hultman</authors>
     <owners>ibizsolutions robinhultman</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
