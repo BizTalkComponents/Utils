@@ -5,17 +5,17 @@ namespace BizTalkComponents.Utils.ContextExtensions
 {
     public static class ContextExtensions
     {
-        public static bool TryRead(this IBaseMessageContext ctx ,ContextProperty property, out string val)
+        public static bool TryRead(this IBaseMessageContext ctx ,ContextProperty property, out object val)
         {
-            return ((val = ctx.Read(property.PropertyName, property.PropertyNamespace) as string) != null);
+            return ((val = ctx.Read(property.PropertyName, property.PropertyNamespace)) != null);
         }
 
-        public static void Promote(this IBaseMessageContext ctx, ContextProperty property, string val)
+        public static void Promote(this IBaseMessageContext ctx, ContextProperty property, object val)
         {
             ctx.Promote(property.PropertyName,property.PropertyNamespace,val);
         }
 
-        public static void Write(this IBaseMessageContext ctx, ContextProperty property, string val)
+        public static void Write(this IBaseMessageContext ctx, ContextProperty property, object val)
         {
             ctx.Write(property.PropertyName, property.PropertyNamespace,val);
         }
@@ -32,7 +32,7 @@ namespace BizTalkComponents.Utils.ContextExtensions
                 throw new ArgumentNullException("destination");
             }
 
-            string sourceValue;
+            object sourceValue;
 
             if (ctx.TryRead(source, out sourceValue))
             {
