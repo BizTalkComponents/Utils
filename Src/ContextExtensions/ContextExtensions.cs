@@ -34,7 +34,7 @@ namespace BizTalkComponents.Utils.ContextExtensions
 
             object sourceValue;
 
-            if (ctx.TryRead(source, out sourceValue))
+            if (!ctx.TryRead(source, out sourceValue))
             {
                 throw new InvalidOperationException("Could not find the specified source property in BizTalk context.");
             }
