@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.BizTalk.Component.Interop;
 
-namespace BizTalkComponents.Utils.PropertyBagHelpers
+namespace BizTalkComponents.Utils.PropertyBagHelper
 {
     public class PropertyBagHelper
     {

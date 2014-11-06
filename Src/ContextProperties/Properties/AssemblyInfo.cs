@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BizTalkComponents.Utils")]
+[assembly: AssemblyTitle("BizTalkComponents.Utils.ContextProperties")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BizTalkComponents.Utils")]
+[assembly: AssemblyProduct("BizTalkComponents.Utils.ContextProperties")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2fa9144e-4ab0-47f7-8a79-ed03ee991ef2")]
+[assembly: Guid("8d9ae7f2-ab13-4db7-8edb-dd49eb87b2a7")]
 
 // Version information for an assembly consists of the following four values:
 //
