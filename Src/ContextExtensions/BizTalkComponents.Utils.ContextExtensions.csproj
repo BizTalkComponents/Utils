@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AE7EE177-5293-4DEE-AB4B-FDE44DE4B894}</ProjectGuid>
+    <ProjectGuid>{BA3C1550-29DA-4987-9CFD-54D132356DFA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BizTalkComponents.Utils</RootNamespace>
-    <AssemblyName>BizTalkComponents.Utils</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>BizTalkComponents.Utils.ContextExtensions</RootNamespace>
+    <AssemblyName>BizTalkComponents.Utils.ContextExtensions</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,17 +29,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>BizTalkComponents.Utils.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.BizTalk.Pipeline, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Microsoft.BizTalk.Pipeline.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.BizTalk.Pipeline, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,18 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextPropertyHelpers\ContextExtensions.cs" />
-    <Compile Include="ContextPropertyHelpers\ContextProperty.cs" />
-    <Compile Include="ContextPropertyHelpers\FileProperties.cs" />
-    <Compile Include="ContextPropertyHelpers\SSOTicketProperties.cs" />
-    <Compile Include="ContextPropertyHelpers\SystemProperties.cs" />
-    <Compile Include="ContextPropertyHelpers\WCFProperties.cs" />
+    <Compile Include="ContextExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyBagHelpers\PropertyBagHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BizTalkComponents.Utils.csproj.nuspec" />
-    <None Include="BizTalkComponents.Utils.snk" />
+    <None Include="BizTalkComponents.Utils.ContextExtensions.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

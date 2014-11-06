@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>BizTalkComponents.Utils</id>
-    <version>1.0.5.0</version>
+    <id>BizTalkComponents.Utils.ContextExtensions</id>
+    <version>1.0.0.0</version>
     <authors>Robin Hultman</authors>
     <owners>ibizsolutions robinhultman</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A set of utilities for BizTalk pipeline component development.</description>
+    <description>Extension methods for the BizTalk message context.</description>
     <releaseNotes>Initial release</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>BizTalk</tags>
   </metadata>
+  <files>
+    <file src="ContextExtensions.cs" target="content\BiztalkComponents.Utils\ContextExtensions.cs" />
+  </files>
 </package>

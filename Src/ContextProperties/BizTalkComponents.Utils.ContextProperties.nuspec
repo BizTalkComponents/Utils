@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BizTalkComponents.Utils.ContextPropertiess</id>
+    <version>1.0.0.0</version>
+    <authors>Robin Hultman</authors>
+    <owners>ibizsolutions</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extension methods for the BizTalk message context.</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>BizTalk</tags>
+  </metadata>
+  <files>
+    <file src="ContextProperties.cs" target="content\BiztalkComponents.Utils\ContextProperties.cs" />
+  </files>
+</package>
