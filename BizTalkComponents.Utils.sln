@@ -8,11 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FFFDE0
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils.ContextExtensions", "Src\ContextExtensions\BizTalkComponents.Utils.ContextExtensions.csproj", "{BA3C1550-29DA-4987-9CFD-54D132356DFA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils.PropertyBagHelper", "Src\PropertyBagHelper\BizTalkComponents.Utils.PropertyBagHelper.csproj", "{F3EA0D2E-9A38-499C-B07B-3039DD6ECEC0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils.ContextProperties", "Src\ContextProperties\BizTalkComponents.Utils.ContextProperties.csproj", "{5E0F228D-8E4E-4EAD-B239-0724F8371F92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils", "Src\ContextExtensions\BizTalkComponents.Utils.csproj", "{BA3C1550-29DA-4987-9CFD-54D132356DFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +20,6 @@ Global
 		{BA3C1550-29DA-4987-9CFD-54D132356DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA3C1550-29DA-4987-9CFD-54D132356DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA3C1550-29DA-4987-9CFD-54D132356DFA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3EA0D2E-9A38-499C-B07B-3039DD6ECEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3EA0D2E-9A38-499C-B07B-3039DD6ECEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3EA0D2E-9A38-499C-B07B-3039DD6ECEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3EA0D2E-9A38-499C-B07B-3039DD6ECEC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E0F228D-8E4E-4EAD-B239-0724F8371F92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E0F228D-8E4E-4EAD-B239-0724F8371F92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E0F228D-8E4E-4EAD-B239-0724F8371F92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E0F228D-8E4E-4EAD-B239-0724F8371F92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

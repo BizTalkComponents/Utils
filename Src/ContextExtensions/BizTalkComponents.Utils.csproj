@@ -7,10 +7,11 @@
     <ProjectGuid>{BA3C1550-29DA-4987-9CFD-54D132356DFA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BizTalkComponents.Utils.ContextExtensions</RootNamespace>
-    <AssemblyName>BizTalkComponents.Utils.ContextExtensions</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>BizTalkComponents.Utils</RootNamespace>
+    <AssemblyName>BizTalkComponents.Utils</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextExtensions.cs" />
+    <Compile Include="ContextProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyBagHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BizTalkComponents.Utils.ContextExtensions.nuspec" />
+    <None Include="BizTalkComponents.Utils.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
