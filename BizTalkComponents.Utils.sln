@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FFFDE0
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils", "Src\ContextExtensions\BizTalkComponents.Utils.csproj", "{BA3C1550-29DA-4987-9CFD-54D132356DFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils", "Src\Utils\BizTalkComponents.Utils.csproj", "{BA3C1550-29DA-4987-9CFD-54D132356DFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
