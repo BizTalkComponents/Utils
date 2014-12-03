@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.BizTalk.Message.Interop;
 
-namespace BizTalkComponents.Utils.ContextExtensions
+namespace BizTalkComponents.Utils
 {
     public static class ContextExtensions
     {
