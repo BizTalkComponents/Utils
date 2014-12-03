@@ -41,6 +41,16 @@ namespace BizTalkComponents.Utils.ContextExtensions
 
             ctx.Promote(destination, sourceValue);
         }
+
+        public static bool IsPromoted(this IBaseMessageContext ctx, ContextProperty property)
+        {
+            return ctx.IsPromoted(property.PropertyName, property.PropertyNamespace);
+        }
+
+        public static object Read(this IBaseMessageContext ctx, ContextProperty property)
+        {
+            return ctx.Read(property.PropertyName, property.PropertyNamespace);
+        }
     }
 
     public class ContextProperty
