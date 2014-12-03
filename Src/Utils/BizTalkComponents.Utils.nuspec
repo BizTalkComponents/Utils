@@ -14,5 +14,6 @@
     <file src="ContextExtensions.cs" target="content\BiztalkComponents.Utils\ContextExtensions.cs" />
     <file src="ContextProperties.cs" target="content\BiztalkComponents.Utils\ContextProperties.cs" />
     <file src="PropertyBagHelper.cs" target="content\BiztalkComponents.Utils\PropertyBagHelper.cs" />
+    <file src="ContextProperty.cs" target="content\BiztalkComponents.Utils\ContextProperty.cs" />
   </files>
 </package>
