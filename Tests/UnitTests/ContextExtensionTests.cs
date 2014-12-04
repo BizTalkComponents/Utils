@@ -26,5 +26,12 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             Assert.AreEqual("Value", val.ToString());
         }
 
+        [TestMethod]
+        public void TryReadInValidTest()
+        {
+            object val;
+
+            Assert.IsFalse(_testMessage.Context.TryRead(new ContextProperty("http://testuri.org#NonExisting"), out val));
+        }
     }
 }
