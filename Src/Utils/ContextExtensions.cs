@@ -17,11 +17,31 @@ namespace BizTalkComponents.Utils
 
         public static void Promote(this IBaseMessageContext ctx, ContextProperty property, object val)
         {
+            if (property == null)
+            {
+                throw new ArgumentNullException("property");
+            }
+
+            if (val == null)
+            {
+                throw new ArgumentNullException("val");
+            }
+
             ctx.Promote(property.PropertyName,property.PropertyNamespace,val);
         }
 
         public static void Write(this IBaseMessageContext ctx, ContextProperty property, object val)
         {
+            if (property == null)
+            {
+                throw new ArgumentNullException("property");
+            }
+
+            if (val == null)
+            {
+                throw new ArgumentNullException("val");
+            }
+
             ctx.Write(property.PropertyName, property.PropertyNamespace,val);
         }
 
@@ -49,11 +69,21 @@ namespace BizTalkComponents.Utils
 
         public static bool IsPromoted(this IBaseMessageContext ctx, ContextProperty property)
         {
+            if (property == null)
+            {
+                throw new ArgumentNullException("property");
+            }
+            
             return ctx.IsPromoted(property.PropertyName, property.PropertyNamespace);
         }
 
         public static object Read(this IBaseMessageContext ctx, ContextProperty property)
         {
+            if (property == null)
+            {
+                throw new ArgumentNullException("property");
+            }
+
             return ctx.Read(property.PropertyName, property.PropertyNamespace);
         }
     }
