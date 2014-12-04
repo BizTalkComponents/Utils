@@ -7,6 +7,11 @@ namespace BizTalkComponents.Utils
     {
         public static bool TryRead(this IBaseMessageContext ctx ,ContextProperty property, out object val)
         {
+            if (property == null)
+            {
+                throw new ArgumentNullException("property");
+            }
+
             return ((val = ctx.Read(property.PropertyName, property.PropertyNamespace)) != null);
         }
 
