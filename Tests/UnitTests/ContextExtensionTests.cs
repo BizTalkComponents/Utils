@@ -42,5 +42,14 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
 
             _testMessage.Context.TryRead(null, out val);
         }
+
+        [TestMethod]
+        public void PromoteValidTest()
+        {
+            _testMessage.Context.Promote(new ContextProperty("http://testuri.org#TestProperty"),"Value");
+
+            Assert.IsTrue(_testMessage.Context.IsPromoted(new ContextProperty("http://testuri.org#TestProperty")));
+            Assert.AreEqual("Value", _testMessage.Context.Read(new ContextProperty("http://testuri.org#TestProperty")));
+        }
     }
 }
