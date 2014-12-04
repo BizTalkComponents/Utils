@@ -33,5 +33,14 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
 
             Assert.IsFalse(_testMessage.Context.TryRead(new ContextProperty("http://testuri.org#NonExisting"), out val));
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TryReadInValidArgumentTest()
+        {
+            object val;
+
+            _testMessage.Context.TryRead(null, out val);
+        }
     }
 }
