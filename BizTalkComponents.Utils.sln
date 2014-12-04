@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FFFDE0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils", "Src\Utils\BizTalkComponents.Utils.csproj", "{BA3C1550-29DA-4987-9CFD-54D132356DFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizTalkComponents.Utils.Tests.UnitTests", "Tests\UnitTests\BizTalkComponents.Utils.Tests.UnitTests.csproj", "{F8F18ED1-98A2-403F-929F-D784168551FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{BA3C1550-29DA-4987-9CFD-54D132356DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA3C1550-29DA-4987-9CFD-54D132356DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA3C1550-29DA-4987-9CFD-54D132356DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F18ED1-98A2-403F-929F-D784168551FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F18ED1-98A2-403F-929F-D784168551FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F18ED1-98A2-403F-929F-D784168551FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F18ED1-98A2-403F-929F-D784168551FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
