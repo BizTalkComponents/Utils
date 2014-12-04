@@ -43,6 +43,24 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
 
             _testMessage.Context.TryRead(null, out val);
         }
+
+        [TestMethod]
+        public void TryReadStringValidTest()
+        {
+            string val;
+
+            Assert.IsTrue(_testMessage.Context.TryRead(new ContextProperty("http://testuri.org#SourceProperty"), out val));
+            Assert.AreEqual("Value", val);
+        }
+
+        [TestMethod]
+        public void TryReadStringInValidTest()
+        {
+            string val;
+
+            Assert.IsFalse(_testMessage.Context.TryRead(new ContextProperty("http://testuri.org#NonExisting"), out val));
+        }
+
         #endregion
 
         #region Promote

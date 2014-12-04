@@ -24,7 +24,7 @@ namespace BizTalkComponents.Utils
             
             val = ctx.Read(property.PropertyName, property.PropertyNamespace) as string;
 
-            return string.IsNullOrWhiteSpace(val);
+            return !string.IsNullOrWhiteSpace(val);
         }
 
         public static void Promote(this IBaseMessageContext ctx, ContextProperty property, object val)
