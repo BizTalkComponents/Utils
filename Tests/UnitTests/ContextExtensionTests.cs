@@ -16,5 +16,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             _testMessage = MessageHelper.Create("<test></test>");
             _testMessage.Context.Promote(new ContextProperty("http://testuri.org#SourceProperty"), "Value");
         }
+
+        [TestMethod]
+        public void TryReadValidTest()
+        {
+            object val;
+
+            Assert.IsTrue(_testMessage.Context.TryRead(new ContextProperty("http://testuri.org#SourceProperty"), out val));
+            Assert.AreEqual("Value", val.ToString());
+        }
+
     }
 }
