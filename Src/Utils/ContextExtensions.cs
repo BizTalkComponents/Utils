@@ -15,6 +15,18 @@ namespace BizTalkComponents.Utils
             return ((val = ctx.Read(property.PropertyName, property.PropertyNamespace)) != null);
         }
 
+        public static bool TryRead(this IBaseMessageContext ctx, ContextProperty property, out string val)
+        {
+            if (property == null)
+            {
+                throw new ArgumentNullException("property");
+            }
+            
+            val = ctx.Read(property.PropertyName, property.PropertyNamespace) as string;
+
+            return string.IsNullOrWhiteSpace(val);
+        }
+
         public static void Promote(this IBaseMessageContext ctx, ContextProperty property, object val)
         {
             if (property == null)
