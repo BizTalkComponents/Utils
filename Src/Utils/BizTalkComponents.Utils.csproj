@@ -47,9 +47,13 @@
     <Compile Include="ContextProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBagHelper.cs" />
+    <Compile Include="RequiredRuntimeAttribute.cs" />
+    <Compile Include="ValidationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BizTalkComponents.Utils.nuspec" />
+    <None Include="BizTalkComponents.Utils.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

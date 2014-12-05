@@ -15,5 +15,7 @@
     <file src="ContextProperties.cs" target="content\BiztalkComponents.Utils\ContextProperties.cs" />
     <file src="PropertyBagHelper.cs" target="content\BiztalkComponents.Utils\PropertyBagHelper.cs" />
     <file src="ContextProperty.cs" target="content\BiztalkComponents.Utils\ContextProperty.cs" />
+    <file src="RequiredRuntimeAttribute.cs" target="content\BiztalkComponents.Utils\RequiredRuntimeAttribute.cs" />
+    <file src="ValidationHelper.cs" target="content\BiztalkComponents.Utils\ValidationHelper.cs" />
   </files>
 </package>
