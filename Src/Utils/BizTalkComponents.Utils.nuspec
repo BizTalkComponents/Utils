@@ -2,13 +2,16 @@
 <package >
   <metadata>
     <id>BizTalkComponents.Utils</id>
-    <version>2.1.0.2</version>
+    <version>2.1.0.3</version>
     <authors>Robin Hultman</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extension methods for the BizTalk message context.</description>
     <releaseNotes>Initial release</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>BizTalk</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net40" />
+    </frameworkAssemblies>
   </metadata>
   <files>
     <file src="ContextExtensions.cs" target="content\BiztalkComponents.Utils\ContextExtensions.cs" />
