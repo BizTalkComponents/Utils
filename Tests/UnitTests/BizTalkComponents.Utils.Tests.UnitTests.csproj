@@ -57,6 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ContextExtensionTests.cs" />
+    <Compile Include="ContextPropertiesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
