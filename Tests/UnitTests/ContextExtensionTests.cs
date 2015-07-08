@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml;
 using Microsoft.BizTalk.Message.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Winterdom.BizTalk.PipelineTesting;
@@ -15,6 +16,8 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             _testMessage = MessageHelper.Create("<test></test>");
             _testMessage.Context.Promote(new ContextProperty("http://testuri.org#SourceProperty"), "Value");
+            _testMessage.Context.Promote(new ContextProperty("http://testuri.org#BooleanProperty"), true);
+            _testMessage.Context.Promote(new ContextProperty("http://testuri.org#XmlDocumentProperty"), new XmlDocument());
         }
 
         #region TryRead
@@ -59,6 +62,40 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             string val;
 
             Assert.IsFalse(_testMessage.Context.TryRead(new ContextProperty("http://testuri.org#NonExisting"), out val));
+        }
+
+        [TestMethod]
+        public void TryReadBooleanValidTest()
+        {
+            bool val;
+
+            Assert.IsTrue(_testMessage.Context.TryRead<bool>(new ContextProperty("http://testuri.org#BooleanProperty"), out val));
+            Assert.AreEqual(true, val);
+        }
+
+        [TestMethod]
+        public void TryReadBooleanInValidTest()
+        {
+            bool val;
+
+            Assert.IsFalse(_testMessage.Context.TryRead<bool>(new ContextProperty("http://testuri.org#NonExisting"), out val));
+        }
+
+        [TestMethod]
+        public void TryReadComplexObjectValidTest()
+        {
+            XmlDocument val;
+
+            Assert.IsTrue(_testMessage.Context.TryRead<XmlDocument>(new ContextProperty("http://testuri.org#XmlDocumentProperty"), out val));
+            Assert.IsNotNull(val);
+        }
+
+        [TestMethod]
+        public void TryReadComplexObjectInValidTest()
+        {
+            XmlDocument val;
+
+            Assert.IsFalse(_testMessage.Context.TryRead<XmlDocument>(new ContextProperty("http://testuri.org#NonExisting"), out val));
         }
 
         #endregion
