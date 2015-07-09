@@ -46,18 +46,9 @@ namespace BizTalkComponents.Utils
                 object val;
                 pb.Read(propName, out val, 0);
 
-                if (val == null)
-                {
-                    return default(T);
-                }
-
-                return (T)val;
+                return val is T ? (T)val : default(T);
             }
             catch (ArgumentException)
-            {
-                return default(T);
-            }
-            catch (InvalidCastException)
             {
                 return default(T);
             }
