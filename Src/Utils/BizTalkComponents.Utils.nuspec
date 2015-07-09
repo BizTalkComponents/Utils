@@ -11,6 +11,7 @@
     <tags>BizTalk</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net40" />
+      <frameworkAssembly assemblyName="Microsoft.XLANGs.BaseTypes" />
     </frameworkAssemblies>
   </metadata>
   <files>
