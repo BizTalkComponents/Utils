@@ -12,6 +12,7 @@
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net40" />
       <frameworkAssembly assemblyName="Microsoft.XLANGs.BaseTypes" />
+      <frameworkAssembly assemblyName="Microsoft.BizTalk.GlobalPropertySchemas" />
     </frameworkAssemblies>
   </metadata>
   <files>
