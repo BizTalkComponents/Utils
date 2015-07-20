@@ -1,16 +1,20 @@
 <?xml version="1.0"?>
-<package >
+
+<package>
   <metadata>
     <id>BizTalkComponents.Utils</id>
-    <version>2.1.2.0</version>
+    <version>2.1.2.1</version>
     <authors>Robin Hultman</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extension methods for the BizTalk message context.</description>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Fixed bug with references to BizTalk assemblies.</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>BizTalk</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net40" />
+      <frameworkAssembly assemblyName="Microsoft.XLANGs.BaseTypes" targetFramework="net40" />
+      <frameworkAssembly assemblyName="Microsoft.BizTalk.GlobalPropertySchemas" targetFramework="net40" />
+      <frameworkAssembly assemblyName="Microsoft.BizTalk.Pipeline" targetFramework="net40" />
     </frameworkAssemblies>
   </metadata>
   <files>

@@ -7,7 +7,7 @@ namespace BizTalkComponents.Utils
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/file-properties#ReceivedFileName
         /// </summary>
-        public readonly string ReceivedFileName = SystemProperties.GetFullyQualifiedName(new FILE.ReceivedFileName());
+        public static readonly string ReceivedFileName = SystemProperties.GetFullyQualifiedName(new FILE.ReceivedFileName());
     }
 
     public class SSOTicketProperties
@@ -15,7 +15,7 @@ namespace BizTalkComponents.Utils
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/system-properties#SSOTicket
         /// </summary>
-        public readonly string SSOTicket = SystemProperties.GetFullyQualifiedName(new BTS.SSOTicket());
+        public static readonly string SSOTicket = SystemProperties.GetFullyQualifiedName(new BTS.SSOTicket());
     }
 
     public class SystemProperties
@@ -23,37 +23,37 @@ namespace BizTalkComponents.Utils
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/system-properties#MessageType
         /// </summary>
-        public readonly string MessageType = GetFullyQualifiedName(new BTS.MessageType());
+        public static readonly string MessageType = GetFullyQualifiedName(new BTS.MessageType());
 
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/system-properties#SchemaStrongName
         /// </summary>
-        public readonly string SchemaStrongName = GetFullyQualifiedName(new BTS.SchemaStrongName());
+        public static readonly string SchemaStrongName = GetFullyQualifiedName(new BTS.SchemaStrongName());
 
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/system-properties#RouteDirectToTP
         /// </summary>
-        public readonly string RouteDirectToTP = GetFullyQualifiedName(new BTS.RouteDirectToTP());
+        public static readonly string RouteDirectToTP = GetFullyQualifiedName(new BTS.RouteDirectToTP());
 
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/system-properties#EpmRRCorrelationToken
         /// </summary>
-        public readonly string EpmRRCorrelationToken = GetFullyQualifiedName(new BTS.EpmRRCorrelationToken());
+        public static readonly string EpmRRCorrelationToken = GetFullyQualifiedName(new BTS.EpmRRCorrelationToken());
 
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/system-properties#CorrelationToken
         /// </summary>
-        public readonly string CorrelationToken = GetFullyQualifiedName(new BTS.CorrelationToken());
+        public static readonly string CorrelationToken = GetFullyQualifiedName(new BTS.CorrelationToken());
 
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/system-properties#IsRequestResponse
         /// </summary>
-        public readonly string IsRequestResponse = GetFullyQualifiedName(new BTS.IsRequestResponse());
+        public static readonly string IsRequestResponse = GetFullyQualifiedName(new BTS.IsRequestResponse());
 
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2003/system-properties#ReqRespTransmitPipelineID
         /// </summary>
-        public readonly string ReqRespTransmitPipelineID = GetFullyQualifiedName(new BTS.ReqRespTransmitPipelineID());
+        public static readonly string ReqRespTransmitPipelineID = GetFullyQualifiedName(new BTS.ReqRespTransmitPipelineID());
 
         public static string GetFullyQualifiedName(PropertyBase propertyBase)
         {
@@ -67,6 +67,6 @@ namespace BizTalkComponents.Utils
         /// <summary>
         /// http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties#OutboundHttpStatusCode
         /// </summary>
-        public readonly string OutboundHttpStatusCode = SystemProperties.GetFullyQualifiedName(new WCF.OutboundHttpStatusCode());
+        public static readonly string OutboundHttpStatusCode = SystemProperties.GetFullyQualifiedName(new WCF.OutboundHttpStatusCode());
     }
 }

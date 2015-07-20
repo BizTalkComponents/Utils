@@ -9,35 +9,31 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         [TestMethod]
         public void ValidateFileNamesTest()
         {
-            var properties = new FileProperties();
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/file-properties#ReceivedFileName", properties.ReceivedFileName);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/file-properties#ReceivedFileName", FileProperties.ReceivedFileName);
         }
 
         [TestMethod]
         public void ValidateSSONamesTest()
         {
-            var properties = new SSOTicketProperties();
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#SSOTicket", properties.SSOTicket);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#SSOTicket", SSOTicketProperties.SSOTicket);
         }
 
         [TestMethod]
         public void ValidateSystemNamesTest()
         {
-            var properties = new SystemProperties();
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#CorrelationToken", properties.CorrelationToken);
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#EpmRRCorrelationToken", properties.EpmRRCorrelationToken);
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#IsRequestResponse", properties.IsRequestResponse);
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#MessageType", properties.MessageType);
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#ReqRespTransmitPipelineID", properties.ReqRespTransmitPipelineID);
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#RouteDirectToTP", properties.RouteDirectToTP);
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#SchemaStrongName", properties.SchemaStrongName);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#CorrelationToken", SystemProperties.CorrelationToken);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#EpmRRCorrelationToken", SystemProperties.EpmRRCorrelationToken);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#IsRequestResponse", SystemProperties.IsRequestResponse);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#MessageType", SystemProperties.MessageType);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#ReqRespTransmitPipelineID", SystemProperties.ReqRespTransmitPipelineID);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#RouteDirectToTP", SystemProperties.RouteDirectToTP);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2003/system-properties#SchemaStrongName", SystemProperties.SchemaStrongName);
         }
 
         [TestMethod]
         public void ValidateWCFNamesTest()
         {
-            var properties = new WCFProperties();
-            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties#OutboundHttpStatusCode", properties.OutboundHttpStatusCode);
+            Assert.AreEqual("http://schemas.microsoft.com/BizTalk/2006/01/Adapters/WCF-properties#OutboundHttpStatusCode", WCFProperties.OutboundHttpStatusCode);
         }
     }
 }
