@@ -36,6 +36,10 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Microsoft.BizTalk.GlobalPropertySchemas.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.BizTalk.Pipeline, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.BizTalk.Streaming, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013\Microsoft.BizTalk.Streaming.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.XLANGs.BaseTypes, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft BizTalk Server 2013 R2\Microsoft.XLANGs.BaseTypes.dll</HintPath>
@@ -57,6 +61,8 @@
     <Compile Include="PropertyBagHelper.cs" />
     <Compile Include="RequiredRuntimeAttribute.cs" />
     <Compile Include="ValidationHelper.cs" />
+    <Compile Include="XmlNamespaceModifier.cs" />
+    <Compile Include="XmlNamespaceRemover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BizTalkComponents.Utils.nuspec">
