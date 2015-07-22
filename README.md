@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/github/BizTalkComponents/Utils?branch=master)](https://ci.appveyor.com/api/projects/status/github/BizTalkComponents/Utilsy/branch/master)
+
 A set of utility classes to help out when developing pipeline components.
 
 ##Validation
@@ -47,5 +49,3 @@ if(!ctx.TryRead<string>(ctx, property, out val))
 throw new InvalidOperationException("Could not find the specified property in BizTalk context.");
 }
 ```
-
-[![Build status](https://ci.appveyor.com/api/projects/status/github/BizTalkComponents/Utils?branch=master)](https://ci.appveyor.com/api/projects/status/github/BizTalkComponents/Utilsy/branch/master)
