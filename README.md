@@ -40,7 +40,12 @@ if (!ctx.TryRead(prop, out val))
 The TryRead method also has generic support to return a strongly typed context property value.
 
 ```
- TryRead<string>(ctx, property, out val);
+string val;
+
+if(!ctx.TryRead<string>(ctx, property, out val))
+{
+throw new InvalidOperationException("Could not find the specified property in BizTalk context.");
+}
 ```
 
 [![Build status](https://ci.appveyor.com/api/projects/status/github/BizTalkComponents/Utils?branch=master)](https://ci.appveyor.com/api/projects/status/github/BizTalkComponents/Utilsy/branch/master)
