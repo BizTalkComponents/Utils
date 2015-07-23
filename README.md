@@ -70,7 +70,7 @@ The TryRead method also has generic support to return a strongly typed context p
 ```c#
 string val;
 
-if(!ctx.TryRead<string>(ctx, property, out val))
+if(!ctx.TryRead<string>(property, out val))
 {
 	throw new InvalidOperationException("Could not find the specified property in BizTalk context.");
 }
