@@ -15,18 +15,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+
+                using (var r = XmlReader.Create(addNamespace))
                 {
-                    var addNamespace = new XmlNamespaceAdder(reader, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
 
-                    using (var r = XmlReader.Create(addNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
                 }
             }
         }
@@ -36,20 +33,17 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Qualified, Misc.NamespaceToAdd);
+
+                using (var r = XmlReader.Create(addNamespace))
                 {
-                    var addNamespace = new XmlNamespaceAdder(reader, null, NamespaceFormEnum.Qualified, Misc.NamespaceToAdd);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
+                    Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
 
-                    using (var r = XmlReader.Create(addNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-                        Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-                        Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
+                    Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
                 }
             }
         }
@@ -59,24 +53,21 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var addNamespace = new XmlNamespaceAdder(fs, "Tests/Test1", NamespaceFormEnum.Qualified, Misc.NamespaceToAdd);
+
+                using (var r = XmlReader.Create(addNamespace))
                 {
-                    var addNamespace = new XmlNamespaceAdder(reader, "Tests/Test1", NamespaceFormEnum.Qualified, Misc.NamespaceToAdd);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
 
-                    using (var r = XmlReader.Create(addNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-                        Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
+                    Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
 
 
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-                        Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
+                    Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
                 }
             }
         }
@@ -86,23 +77,20 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var addNamespace = new XmlNamespaceAdder(fs, "Tests/Test1", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+
+                using (var r = XmlReader.Create(addNamespace))
                 {
-                    var addNamespace = new XmlNamespaceAdder(reader, "Tests/Test1", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
 
-                    using (var r = XmlReader.Create(addNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-                        Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
+                    Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
 
 
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
                 }
             }
         }
@@ -112,23 +100,20 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.UnqualifiedXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var addNamespace = new XmlNamespaceAdder(fs, "http://test:Tests/Test1", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+
+                using (var r = XmlReader.Create(addNamespace))
                 {
-                    var addNamespace = new XmlNamespaceAdder(reader, "http://test:Tests/Test1", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.ExistingNamespace, "Child node is not qualified within {0}", Misc.ExistingNamespace);
 
-                    using (var r = XmlReader.Create(addNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == Misc.ExistingNamespace, "Child node is not qualified within {0}", Misc.ExistingNamespace);
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-                        Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
+                    Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
 
 
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
                 }
             }
         }
@@ -138,34 +123,21 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                var addNamespace2 = new XmlNamespaceAdder(addNamespace, "http://testAdd:Tests/Test1", NamespaceFormEnum.Qualified, Misc.NamespaceToAdd2);
+                var addNamespace3 = new XmlNamespaceAdder(addNamespace2, "http://testAdd:Tests/Test2", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd3);
+
+                using (var r = XmlReader.Create(addNamespace3))
                 {
-                    var addNamespace = new XmlNamespaceAdder(reader, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
 
-                    using (var reader2 = XmlReader.Create(addNamespace))
-                    {
-                        var addNamespace2 = new XmlNamespaceAdder(reader2, "http://testAdd:Tests/Test1",NamespaceFormEnum.Qualified, Misc.NamespaceToAdd2);
+                    Assert.IsTrue(r.ReadToFollowing("Test1", Misc.NamespaceToAdd2));
+                    Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
 
-                        using (var reader3 = XmlReader.Create(addNamespace2))
-                        {
-                            var addNamespace3 = new XmlNamespaceAdder(reader3, "http://testAdd:Tests/Test2", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd3);
-
-                            using (var r = XmlReader.Create(addNamespace3))
-                            {
-                                r.MoveToContent();
-                                Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-
-                                Assert.IsTrue(r.ReadToFollowing("Test1", Misc.NamespaceToAdd2));
-                                Assert.IsTrue(r.Prefix != string.Empty, "Node is not qualified with prefix");
-
-                                Assert.IsTrue(r.ReadToFollowing("Test2", Misc.NamespaceToAdd3));
-                                r.MoveToNextElement();
-                                Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
-                            }
-                        }
-                    }
-
-                   
+                    Assert.IsTrue(r.ReadToFollowing("Test2", Misc.NamespaceToAdd3));
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Node node is not unqualified");
                 }
             }
         }
@@ -175,19 +147,16 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Default, Misc.NamespaceToAdd);
+
+                using (var r = XmlReader.Create(addNamespace))
                 {
-                    var addNamespace = new XmlNamespaceAdder(reader, null, NamespaceFormEnum.Default, Misc.NamespaceToAdd);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
+                    Assert.IsTrue(r.Prefix == string.Empty, "Node is not without with prefix");
 
-                    using (var r = XmlReader.Create(addNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == Misc.NamespaceToAdd, "Child node is not qualified within {0}", Misc.NamespaceToAdd);
-                        Assert.IsTrue(reader.Prefix == string.Empty, "Node is not without with prefix");
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(reader.Prefix == string.Empty, "Node is not without with prefix");
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.Prefix == string.Empty, "Node is not without with prefix");
                 }
             }
         }
@@ -198,14 +167,11 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.UnqualifiedXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
-                {
-                    var addNamespace = new XmlNamespaceAdder(reader, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
 
-                    using (var r = XmlReader.Create(addNamespace))
-                    {
-                        while (reader.Read()) { }
-                    }
+                using (var r = XmlReader.Create(addNamespace))
+                {
+                    while (r.Read()) { }
                 }
             }
         }

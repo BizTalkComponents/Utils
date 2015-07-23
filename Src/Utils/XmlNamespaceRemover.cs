@@ -7,17 +7,10 @@ namespace BizTalkComponents.Utils
 {
     public class XmlNamespaceRemover : XmlTranslatorStream
     {
-        public XmlNamespaceRemover(XmlReader reader) : base(reader)
+
+        public XmlNamespaceRemover(Stream input) : base(new XmlTextReader(input))
         {
 
-        }
-
-        public XmlNamespaceRemover(XmlReader reader, Encoding encoding) : base(reader, encoding)
-        {
-        }
-
-        public XmlNamespaceRemover(XmlReader reader, Encoding encoding, MemoryStream outputStream) : base(reader, encoding, outputStream)
-        {
         }
 
         protected override void TranslateStartElement(string prefix, string localName, string nsURI)

@@ -11,15 +11,15 @@ namespace BizTalkComponents.Utils
         private readonly string _newNamespacePrefix;
         private readonly string _oldNamespace;
 
-        public XmlNamespaceModifier(XmlReader reader, string newNamespace, string newNamespacePrefix, string oldNamespace) : base(reader)
+        public XmlNamespaceModifier(Stream input, string newNamespace, string newNamespacePrefix, string oldNamespace) : base(new XmlTextReader(input))
         {
             _newNamespace = newNamespace;
             _newNamespacePrefix = newNamespacePrefix;
             _oldNamespace = oldNamespace;
         }
 
-        public XmlNamespaceModifier(XmlReader reader, Encoding encoding, string newNamespace, string newNamespacePrefix, string oldNamespace)
-            : base(reader, encoding)
+        public XmlNamespaceModifier(Stream input, Encoding encoding, string newNamespace, string newNamespacePrefix, string oldNamespace)
+            : base(new XmlTextReader(input), encoding)
         {
             _newNamespace = newNamespace;
             _newNamespacePrefix = newNamespacePrefix;

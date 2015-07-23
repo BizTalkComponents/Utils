@@ -13,7 +13,7 @@ namespace BizTalkComponents.Utils
         private readonly string _namespaceToAdd;
         private static NavigationHistoryManager _navigationHistoryManager;
 
-        public XmlNamespaceAdder(XmlReader reader, string xPath, NamespaceFormEnum namespaceForm, string namespaceToAdd) : base(reader)
+        public XmlNamespaceAdder(Stream input, string xPath, NamespaceFormEnum namespaceForm, string namespaceToAdd) : base(new XmlTextReader(input))
         {
             _xPath = xPath;
             _namespaceForm = namespaceForm;
@@ -21,12 +21,7 @@ namespace BizTalkComponents.Utils
             _navigationHistoryManager = new NavigationHistoryManager();
         }
 
-        public XmlNamespaceAdder(XmlReader reader, Encoding encoding) : base(reader, encoding)
-        {
-            _navigationHistoryManager = new NavigationHistoryManager();
-        }
-
-        public XmlNamespaceAdder(XmlReader reader, Encoding encoding, MemoryStream outputStream) : base(reader, encoding, outputStream)
+        public XmlNamespaceAdder(Stream input, Encoding encoding) : base(new XmlTextReader(input), encoding)
         {
             _navigationHistoryManager = new NavigationHistoryManager();
         }

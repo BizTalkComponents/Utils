@@ -16,18 +16,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.QualifiedDefaultXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var modifyNamespace = new XmlNamespaceModifier(fs, Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+
+                using (var r = XmlReader.Create(modifyNamespace))
                 {
-                    var modifyNamespace = new XmlNamespaceModifier(reader, Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Root element is not qualified within {0}", Misc.ModifiedNamespace);
 
-                    using (var r = XmlReader.Create(modifyNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Root element is not qualified within {0}", Misc.ModifiedNamespace);
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Child element is not qualified within {0}", Misc.ModifiedNamespace);
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Child element is not qualified within {0}", Misc.ModifiedNamespace);
                 }
             }
         }
@@ -37,18 +34,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.UnqualifiedDefaultXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var modifyNamespace = new XmlNamespaceModifier(fs, Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+
+                using (var r = XmlReader.Create(modifyNamespace))
                 {
-                    var modifyNamespace = new XmlNamespaceModifier(reader, Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Root element is not qualified within {0}", Misc.ModifiedNamespace);
 
-                    using (var r = XmlReader.Create(modifyNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Root element is not qualified within {0}", Misc.ModifiedNamespace);
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Child element is not unqaulified");
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Child element is not unqaulified");
                 }
             }
         }
@@ -58,18 +52,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.QualifiedXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var modifyNamespace = new XmlNamespaceModifier(fs, Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+
+                using (var r = XmlReader.Create(modifyNamespace))
                 {
-                    var modifyNamespace = new XmlNamespaceModifier(reader, Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Root element is not qualified within {0}", Misc.ModifiedNamespace);
 
-                    using (var r = XmlReader.Create(modifyNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Root element is not qualified within {0}", Misc.ModifiedNamespace);
-
-                        r.MoveToNextElement();
-                        Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Child element is not qualified within {0}", Misc.ModifiedNamespace);
-                    }
+                    r.MoveToNextElement();
+                    Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Child element is not qualified within {0}", Misc.ModifiedNamespace);
                 }
             }
         }
@@ -79,19 +70,16 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.UnqualifiedXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var modifyNamespace = new XmlNamespaceModifier(fs, Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+
+                using (var r = XmlReader.Create(modifyNamespace))
                 {
-                    var modifyNamespace = new XmlNamespaceModifier(reader, Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Root element is not qualified within {0}", Misc.ModifiedNamespace);
 
-                    using (var r = XmlReader.Create(modifyNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == Misc.ModifiedNamespace, "Root element is not qualified within {0}", Misc.ModifiedNamespace);
+                    r.MoveToNextElement();
 
-                        r.MoveToNextElement();
-
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Child element should is not unqualified");
-                    }
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Child element should is not unqualified");
                 }
             }
         }
@@ -113,7 +101,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         //    using (var reader = XmlReader.Create(s))
         //    {
         //        var modifyNamespace = new XmlNamespaceModifier(reader, Misc.ModifiedNamespace, string.Empty, "NoMatch");
-                
+
         //        using (var file = File.Open(TestFiles.UnqualifiedXmlFilePath, FileMode.Open, FileAccess.Read))
         //        {
         //            var xml1 = Encoding.UTF8.GetString(file.ToByteArray());
@@ -130,12 +118,9 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.MissingBomXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
-                {
-                    var modifyNamespace = new XmlNamespaceModifier(reader, new UTF8Encoding(false), Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
+                var modifyNamespace = new XmlNamespaceModifier(fs, new UTF8Encoding(false), Misc.ModifiedNamespace, string.Empty, Misc.ExistingNamespace);
 
-                    Assert.IsFalse(HasUtf8Bom(modifyNamespace), "BOM has been added to file");
-                }
+                Assert.IsFalse(HasUtf8Bom(modifyNamespace), "BOM has been added to file");
             }
         }
 

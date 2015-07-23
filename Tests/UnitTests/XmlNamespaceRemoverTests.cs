@@ -13,18 +13,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.QualifiedXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var removeNamespace = new XmlNamespaceRemover(fs);
+
+                using (var r = XmlReader.Create(removeNamespace))
                 {
-                    var removeNamespace = new XmlNamespaceRemover(reader);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Root node namespace is not removed");
 
-                    using (var r = XmlReader.Create(removeNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Root node namespace is not removed");
-
-                        r.MoveToElement();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Child node namespace is not removed");
-                    }
+                    r.MoveToElement();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Child node namespace is not removed");
                 }
             }
         }
@@ -34,18 +31,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.UnqualifiedXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var removeNamespace = new XmlNamespaceRemover(fs);
+
+                using (var r = XmlReader.Create(removeNamespace))
                 {
-                    var removeNamespace = new XmlNamespaceRemover(reader);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Root node namespace is not removed");
 
-                    using (var r = XmlReader.Create(removeNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Root node namespace is not removed");
-
-                        reader.MoveToElement();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Child node namespace is not removed");
-                    }
+                    r.MoveToElement();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Child node namespace is not removed");
                 }
             }
         }
@@ -55,18 +49,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.QualifiedDefaultXmlFilePath, FileMode.Open))
             {
-                using (var reader = XmlReader.Create(fs))
+                var removeNamespace = new XmlNamespaceRemover(fs);
+
+                using (var r = XmlReader.Create(removeNamespace))
                 {
-                    var removeNamespace = new XmlNamespaceRemover(reader);
+                    r.MoveToContent();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Root node namespace is not removed");
 
-                    using (var r = XmlReader.Create(removeNamespace))
-                    {
-                        r.MoveToContent();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Root node namespace is not removed");
-
-                        r.MoveToElement();
-                        Assert.IsTrue(r.NamespaceURI == string.Empty, "Child node namespace is not removed");
-                    }
+                    r.MoveToElement();
+                    Assert.IsTrue(r.NamespaceURI == string.Empty, "Child node namespace is not removed");
                 }
             }
         }
