@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Xml;
 using BizTalkComponents.Utils.Tests.UnitTests.Constants;
 using BizTalkComponents.Utils.Tests.UnitTests.Extensions;
@@ -15,7 +16,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd, Encoding.UTF8);
 
                 using (var r = XmlReader.Create(addNamespace))
                 {
@@ -33,7 +34,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Qualified, Misc.NamespaceToAdd);
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Qualified, Misc.NamespaceToAdd, Encoding.UTF8);
 
                 using (var r = XmlReader.Create(addNamespace))
                 {
@@ -53,7 +54,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                var addNamespace = new XmlNamespaceAdder(fs, "Tests/Test1", NamespaceFormEnum.Qualified, Misc.NamespaceToAdd);
+                var addNamespace = new XmlNamespaceAdder(fs, "Tests/Test1", NamespaceFormEnum.Qualified, Misc.NamespaceToAdd, Encoding.UTF8);
 
                 using (var r = XmlReader.Create(addNamespace))
                 {
@@ -77,7 +78,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                var addNamespace = new XmlNamespaceAdder(fs, "Tests/Test1", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                var addNamespace = new XmlNamespaceAdder(fs, "Tests/Test1", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd, Encoding.UTF8);
 
                 using (var r = XmlReader.Create(addNamespace))
                 {
@@ -100,7 +101,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.UnqualifiedXmlFilePath, FileMode.Open))
             {
-                var addNamespace = new XmlNamespaceAdder(fs, "http://test:Tests/Test1", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                var addNamespace = new XmlNamespaceAdder(fs, "http://test:Tests/Test1", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd, Encoding.UTF8);
 
                 using (var r = XmlReader.Create(addNamespace))
                 {
@@ -123,9 +124,9 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
-                var addNamespace2 = new XmlNamespaceAdder(addNamespace, "http://testAdd:Tests/Test1", NamespaceFormEnum.Qualified, Misc.NamespaceToAdd2);
-                var addNamespace3 = new XmlNamespaceAdder(addNamespace2, "http://testAdd:Tests/Test2", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd3);
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd, Encoding.UTF8);
+                var addNamespace2 = new XmlNamespaceAdder(addNamespace, "http://testAdd:Tests/Test1", NamespaceFormEnum.Qualified, Misc.NamespaceToAdd2, Encoding.UTF8);
+                var addNamespace3 = new XmlNamespaceAdder(addNamespace2, "http://testAdd:Tests/Test2", NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd3, Encoding.UTF8);
 
                 using (var r = XmlReader.Create(addNamespace3))
                 {
@@ -147,7 +148,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.NoNamespaceXmlFilePath, FileMode.Open))
             {
-                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Default, Misc.NamespaceToAdd);
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Default, Misc.NamespaceToAdd, Encoding.UTF8);
 
                 using (var r = XmlReader.Create(addNamespace))
                 {
@@ -167,7 +168,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         {
             using (var fs = new FileStream(TestFiles.UnqualifiedXmlFilePath, FileMode.Open))
             {
-                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd);
+                var addNamespace = new XmlNamespaceAdder(fs, null, NamespaceFormEnum.Unqualified, Misc.NamespaceToAdd, Encoding.UTF8);
 
                 using (var r = XmlReader.Create(addNamespace))
                 {
