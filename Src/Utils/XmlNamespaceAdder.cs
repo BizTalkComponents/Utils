@@ -75,5 +75,11 @@ namespace BizTalkComponents.Utils
                 }
             }
         }
+
+        protected override void TranslateXmlDeclaration(string target, string val)
+        {
+            base.TranslateXmlDeclaration(target, val);
+            m_writer.WriteProcessingInstruction(target, val);
+        }
     }
 }

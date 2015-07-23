@@ -34,5 +34,11 @@ namespace BizTalkComponents.Utils
                 base.TranslateAttributeValue(prefix, localName, nsURI, val);    
             }
         }
+
+        protected override void TranslateXmlDeclaration(string target, string val)
+        {
+            base.TranslateXmlDeclaration(target, val);
+            m_writer.WriteProcessingInstruction(target, val);
+        }
     }
 }
