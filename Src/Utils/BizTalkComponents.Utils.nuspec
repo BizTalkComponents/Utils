@@ -24,5 +24,12 @@
     <file src="ContextProperty.cs" target="content\BiztalkComponents.Utils\ContextProperty.cs" />
     <file src="RequiredRuntimeAttribute.cs" target="content\BiztalkComponents.Utils\RequiredRuntimeAttribute.cs" />
     <file src="ValidationHelper.cs" target="content\BiztalkComponents.Utils\ValidationHelper.cs" />
+    <file src="NamespaceFormEnum.cs" target="content\BiztalkComponents.Utils\NamespaceFormEnum.cs" />
+    <file src="NavigationHistoryItem.cs" target="content\BiztalkComponents.Utils\NavigationHistoryItem.cs" />
+    <file src="NavigationHistoryManager.cs" target="content\BiztalkComponents.Utils\NavigationHistoryManager.cs" />
+    <file src="NavigationPath.cs" target="content\BiztalkComponents.Utils\NavigationPath.cs" />
+    <file src="XmlNamespaceAdder.cs" target="content\BiztalkComponents.Utils\XmlNamespaceAdder.cs" />
+    <file src="XmlNamespaceRemover.cs" target="content\BiztalkComponents.Utils\XmlNamespaceRemover.cs" />
+    <file src="XmlNamespaceModifier.cs" target="content\BiztalkComponents.Utils\XmlNamespaceModifier.cs" />
   </files>
 </package>
