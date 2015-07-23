@@ -57,10 +57,15 @@
     <Compile Include="ContextExtensions.cs" />
     <Compile Include="ContextProperties.cs" />
     <Compile Include="ContextProperty.cs" />
+    <Compile Include="NamespaceFormEnum.cs" />
+    <Compile Include="NavigationHistoryItem.cs" />
+    <Compile Include="NavigationHistoryManager.cs" />
+    <Compile Include="NavigationPath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBagHelper.cs" />
     <Compile Include="RequiredRuntimeAttribute.cs" />
     <Compile Include="ValidationHelper.cs" />
+    <Compile Include="XmlNamespaceAdder.cs" />
     <Compile Include="XmlNamespaceModifier.cs" />
     <Compile Include="XmlNamespaceRemover.cs" />
   </ItemGroup>

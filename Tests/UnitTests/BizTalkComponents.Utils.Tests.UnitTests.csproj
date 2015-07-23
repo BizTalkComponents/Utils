@@ -66,6 +66,7 @@
     <Compile Include="Extensions\XmlReaderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBagHelperTests.cs" />
+    <Compile Include="XmlNamespaceAdderTests.cs" />
     <Compile Include="XmlNamespaceModifierTests.cs" />
     <Compile Include="XmlNamespaceRemoverTests.cs" />
   </ItemGroup>
@@ -89,6 +90,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\XmlMissingBOM.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\XmlNoNamespace.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\XmlQualified.xml">
