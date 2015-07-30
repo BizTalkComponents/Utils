@@ -82,7 +82,7 @@ namespace BizTalkComponents.Utils
 
             if (!ctx.TryRead(source, out sourceValue))
             {
-                throw new InvalidOperationException("Could not find the specified source property in BizTalk context.");
+                throw new InvalidOperationException(string.Format("Could not find the specified source property {0} in BizTalk context.",source));
             }
 
             ctx.Promote(destination, sourceValue);
