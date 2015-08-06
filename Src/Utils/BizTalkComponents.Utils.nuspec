@@ -11,10 +11,10 @@
     <copyright>Copyright 2014</copyright>
     <tags>BizTalk</tags>
     <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net40" />
-      <frameworkAssembly assemblyName="Microsoft.XLANGs.BaseTypes" targetFramework="net40" />
-      <frameworkAssembly assemblyName="Microsoft.BizTalk.GlobalPropertySchemas" targetFramework="net40" />
-      <frameworkAssembly assemblyName="Microsoft.BizTalk.Pipeline" targetFramework="net40" />
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations"/>
+      <frameworkAssembly assemblyName="Microsoft.XLANGs.BaseTypes"  />
+      <frameworkAssembly assemblyName="Microsoft.BizTalk.GlobalPropertySchemas" />
+      <frameworkAssembly assemblyName="Microsoft.BizTalk.Pipeline"  />
     </frameworkAssemblies>
   </metadata>
   <files>
