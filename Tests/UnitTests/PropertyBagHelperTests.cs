@@ -13,6 +13,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
     public class PropertyBagHelperTests
     {
         private IPropertyBag _propertyBag;
+        private IPropertyBag _uninitializedPropertyBag;
         private const bool TestBool = true;
         private DateTime TestDate = new DateTime(0001, 12, 25, 6, 0, 0);
         private const int TestInt = 42;
@@ -37,7 +38,15 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
                 "<" + TestIntString + " vt='" + vtInt + "'>" + TestInt + "</" + TestIntString + ">" +
                 "<" + TestStringString + " vt='" + vtString + "'>" + TestString + "</" + TestStringString + ">" +
                 "</Properties>";
+
+            string xmlUninitialized = @"<Properties>" +
+               "<" + TestBoolString + " vt='" + vtBoolean + "'>" + Convert.ToInt32(default(bool)) + "</" + TestBoolString + ">" +
+               "<" + TestDateString + " vt='" + vtDate + "'>" + default(DateTime).ToString("s") + "</" + TestDateString + ">" +
+               "<" + TestIntString + " vt='" + vtInt + "'>" + default(int) + "</" + TestIntString + ">" +
+               "<" + TestStringString + " vt='" + vtString + "'>" + default(string) + "</" + TestStringString + ">" +
+               "</Properties>";
             _propertyBag = new InstConfigPropertyBag(Load(xml));
+            _uninitializedPropertyBag = new InstConfigPropertyBag(Load(xmlUninitialized));
         }
 
         [TestMethod]
@@ -58,6 +67,25 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         }
 
         [TestMethod]
+        public void ReadPropertyBagDateTimeWithOldValueTest()
+        {
+            DateTime oldValue = TestDate;
+            DateTime property = PropertyBagHelper.ReadPropertyBag<DateTime>(_uninitializedPropertyBag, TestDateString, oldValue);
+            Assert.AreEqual(oldValue, property);
+
+            property = PropertyBagHelper.ReadPropertyBag<DateTime>(_propertyBag, TestDateString, oldValue);
+            Assert.AreEqual(TestDate, property);
+        }
+        
+        [TestMethod]
+        public void ReadPropertyBagDateTimeWithOldValueFailTest()
+        {
+            DateTime oldValue = default(DateTime);
+            DateTime property = PropertyBagHelper.ReadPropertyBag<DateTime>(_propertyBag, "Wrong" + TestDateString, oldValue);
+            Assert.AreEqual(default(DateTime), property);
+        }
+
+        [TestMethod]
         public void ReadPropertyBagDateTimeGenericTest()
         {
             DateTime property = PropertyBagHelper.ReadPropertyBag<DateTime>(_propertyBag, TestDateString);
@@ -72,11 +100,32 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         }
 
         [TestMethod]
+        public void ReadPropertyBagBooleanWithOldValueTest()
+        {
+            bool oldValue = false;
+            bool property = PropertyBagHelper.ReadPropertyBag<bool>(_uninitializedPropertyBag, TestBoolString, oldValue);
+            Assert.AreEqual(oldValue, property);
+
+            property = PropertyBagHelper.ReadPropertyBag<bool>(_propertyBag, TestBoolString, oldValue);
+            Assert.AreEqual(TestBool, property);
+        }
+
+      
+        [TestMethod]
+        public void ReadPropertyBagBooleanWithOldValueFailTest()
+        {
+            bool oldValue = false;
+            bool property = PropertyBagHelper.ReadPropertyBag<bool>(_propertyBag, "Wrong" + TestBoolString, oldValue);
+            Assert.AreEqual(default(bool), property);
+        }
+
+        [TestMethod]
         public void ReadPropertyBagBooleanGenericTest()
         {
             bool property = PropertyBagHelper.ReadPropertyBag<bool>(_propertyBag, TestBoolString);
             Assert.AreEqual(TestBool, property);
         }
+        
 
         [TestMethod]
         public void ReadPropertyBagBooleanGenericFailTest()
@@ -84,7 +133,26 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             bool property = PropertyBagHelper.ReadPropertyBag<bool>(_propertyBag, "Wrong" + TestBoolString);
             Assert.AreEqual(default(bool), property);
         }
+        
 
+        [TestMethod]
+        public void ReadPropertyBagWithOldValueInt()
+        {
+            int oldValue = 3;
+            int property = PropertyBagHelper.ReadPropertyBag<int>(_uninitializedPropertyBag, TestIntString,oldValue);
+            Assert.AreEqual(oldValue, property);
+
+            property = PropertyBagHelper.ReadPropertyBag<int>(_propertyBag, TestIntString, oldValue);
+            Assert.AreEqual(TestInt, property);
+        }
+
+        [TestMethod]
+        public void ReadPropertyBagWithOldValueIntGenericFailTest()
+        {
+            int property = PropertyBagHelper.ReadPropertyBag<int>(_propertyBag, "Wrong" + TestIntString,default(int));
+            Assert.AreEqual(default(int), property);
+        }
+        
         [TestMethod]
         public void ReadPropertyBagIntGenericTest()
         {
@@ -103,6 +171,13 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         public void ReadPropertyBagWrongTypeTest()
         {
             int property = PropertyBagHelper.ReadPropertyBag<int>(_propertyBag, TestBoolString);
+            Assert.AreEqual(default(int), property);
+        }
+
+        [TestMethod]
+        public void ReadPropertyWitOldValueBagWrongTypeTest()
+        {
+            int property = PropertyBagHelper.ReadPropertyBag<int>(_propertyBag, TestBoolString,3);
             Assert.AreEqual(default(int), property);
         }
 
