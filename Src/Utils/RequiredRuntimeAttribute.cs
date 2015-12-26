@@ -5,9 +5,13 @@ namespace BizTalkComponents.Utils
     public class RequiredRuntimeAttribute : ValidationAttribute
     {
         private const string ErrorMsg = "Property must be set.";
+        public bool AllowEmptyStringValue { get; set; }
 
         public RequiredRuntimeAttribute()
-            : base(ErrorMsg){}
+            : base(ErrorMsg)
+        {
+            
+        }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -22,7 +26,7 @@ namespace BizTalkComponents.Utils
                 
                 if (value is string)
                 {
-                    if (string.IsNullOrEmpty(value as string))
+                    if(!AllowEmptyStringValue && string.IsNullOrEmpty((string) value))
                     {
                         return new ValidationResult(ErrorMsg, new[] {validationContext.MemberName});
                     }
