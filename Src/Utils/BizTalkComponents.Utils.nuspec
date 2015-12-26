@@ -3,7 +3,7 @@
 <package>
   <metadata>
     <id>BizTalkComponents.Utils</id>
-    <version>2.3.0-beta2</version>
+    <version>2.3.0-beta3</version>
     <authors>Robin Hultman</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extension methods for the BizTalk message context.</description>
@@ -24,5 +24,6 @@
     <file src="ContextProperty.cs" target="content\BiztalkComponents.Utils\ContextProperty.cs" />
     <file src="RequiredRuntimeAttribute.cs" target="content\BiztalkComponents.Utils\RequiredRuntimeAttribute.cs" />
     <file src="ValidationHelper.cs" target="content\BiztalkComponents.Utils\ValidationHelper.cs" />
+    <file src="PipelineComponentPropertyAttribute.cs" target="content\BiztalkComponents.Utils\PipelineComponentPropertyAttribute.cs" />
   </files>
 </package>
