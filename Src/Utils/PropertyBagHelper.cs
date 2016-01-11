@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Microsoft.BizTalk.Component.Interop;
 
 namespace BizTalkComponents.Utils
@@ -105,6 +106,32 @@ namespace BizTalkComponents.Utils
             {
                 throw new ApplicationException(e.Message);
             }
+        }
+
+        public static void WriteAll(IPropertyBag pb, object instance)
+        {
+            var props = GetPipelineComponentProperties(instance);
+
+            foreach (var prop in props)
+            {
+                WritePropertyBag(pb, prop.Name, prop.GetValue(instance,null));
+            }
+        }
+
+        public static void ReadAll(IPropertyBag pb, object instance)
+        {
+            var props = GetPipelineComponentProperties(instance);
+
+            foreach (var prop in props)
+            {
+                var oldValue = prop.GetValue(instance, null);
+                prop.SetValue(instance, ReadPropertyBag(pb, prop.Name, oldValue), null);
+            }
+        }
+
+        private static IEnumerable<PropertyInfo> GetPipelineComponentProperties(object instance)
+        {
+            return  instance.GetType().GetProperties();
         }
     }
 }

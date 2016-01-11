@@ -94,6 +94,17 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             bool property = PropertyBagHelper.ReadPropertyBag<bool>(_propertyBag, TestBoolString);
             Assert.AreEqual(TestBool, property);
         }
+
+        [TestMethod]
+        public void ReadAllPropertyBag()
+        {
+            var testClass = new PropertyBagTestClass();
+            PropertyBagHelper.ReadAll(_propertyBag,testClass);
+            Assert.AreEqual(true, testClass.TestBoolean);
+            Assert.AreEqual(TestDate, testClass.TestDate);
+            Assert.AreEqual(42, testClass.TestInteger);
+            Assert.AreEqual("SomeTestString", testClass.TestString);
+        }
         
 
         [TestMethod]
@@ -146,6 +157,25 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             var property = PropertyBagHelper.ReadPropertyBag<XmlDocument>(_propertyBag, TestXmlDocumentString);
             Assert.IsNotNull(property);
         }
+
+        [TestMethod]
+        public void WriteAllPropertyBagTest()
+        {
+            var testClass = new PropertyBagTestClass
+            {
+                TestBoolean = true,
+                TestDate = new DateTime(2000, 12, 25, 6, 0, 0),
+                TestInteger = 13,
+                TestString = "This is a test string"
+            };
+            PropertyBagHelper.WriteAll(_propertyBag, testClass);
+
+            Assert.AreEqual(true, PropertyBagHelper.ReadPropertyBag(_propertyBag, "TestBoolean", TestBool));
+            Assert.AreEqual("This is a test string", PropertyBagHelper.ReadPropertyBag(_propertyBag, "TestString", TestString));
+            Assert.AreEqual(new DateTime(2000, 12, 25, 6, 0, 0), PropertyBagHelper.ReadPropertyBag(_propertyBag, "TestDate", TestDate));
+            Assert.AreEqual(13, PropertyBagHelper.ReadPropertyBag(_propertyBag, "TestInteger", TestInt));
+        }
+        
         
         private XmlReader Load(string xml)
         {
@@ -153,5 +183,13 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             reader.Read();
             return reader;
         }
+    }
+
+    internal class PropertyBagTestClass
+    {
+        public bool TestBoolean { get; set; }
+        public string TestString { get; set; }
+        public DateTime TestDate { get; set; }
+        public int TestInteger { get; set; }
     }
 }
