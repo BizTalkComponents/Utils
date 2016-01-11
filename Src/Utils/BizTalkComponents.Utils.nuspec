@@ -24,6 +24,5 @@
     <file src="ContextProperty.cs" target="content\BiztalkComponents.Utils\ContextProperty.cs" />
     <file src="RequiredRuntimeAttribute.cs" target="content\BiztalkComponents.Utils\RequiredRuntimeAttribute.cs" />
     <file src="ValidationHelper.cs" target="content\BiztalkComponents.Utils\ValidationHelper.cs" />
-    <file src="PipelineComponentPropertyAttribute.cs" target="content\BiztalkComponents.Utils\PipelineComponentPropertyAttribute.cs" />
   </files>
 </package>

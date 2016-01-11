@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Microsoft.BizTalk.Component.Interop;
 
@@ -132,10 +131,7 @@ namespace BizTalkComponents.Utils
 
         private static IEnumerable<PropertyInfo> GetPipelineComponentProperties(object instance)
         {
-            return  instance.GetType().GetProperties().Where(
-               prop => Attribute.IsDefined(prop, typeof(PipelineComponentPropertyAttribute)));
+            return  instance.GetType().GetProperties();
         }
-
-
     }
 }
