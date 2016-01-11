@@ -89,3 +89,10 @@ The standard WritePropertyBag is also included so that it doesn't have to be add
 ```c#
 PropertyBagHelper.WritePropertyBag(propertyBag, PropertyName, PropertyValue);
 ```
+
+There is also methods for reading and writing all properties of the current pipeline component.
+```c#
+PropertyBagHelper.WriteAll(propertyBag, this);
+PropertyBagHelper.ReadAll(propertyBag, this);
+```
+
