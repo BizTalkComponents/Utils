@@ -7,6 +7,7 @@ BizTalkComponents.Utils is a library of helper methods intended to reduce the am
 [Propertybag helpers](#propertybaghelpers)  
 
 <a name="validation"/>
+
 ## Validation ##
 Validation attribute for validating properties at runtime. Unlike the Required attribute the RequiredRuntime won't give a compilation error at design time.
 
@@ -31,6 +32,7 @@ public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
 }
 ```
 <a name="contexthelpers"/>
+
 ## Context helpers ##
 Entity class representing a context property.
 
@@ -76,6 +78,7 @@ if(!ctx.TryRead<string>(property, out val))
 }
 ```
 ## Property bag helpers ##
+
 <a name="propertybaghelpers"/>
 BizTalkComponents.Utils has a generic version of the ReadPropertyBag and WritePropertyBag methods that are typically included in all parameterized pipeline components.
 
