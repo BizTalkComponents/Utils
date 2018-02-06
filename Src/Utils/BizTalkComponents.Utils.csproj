@@ -61,6 +61,7 @@
     <Compile Include="ContextExtensions.cs" />
     <Compile Include="ContextProperties.cs" />
     <Compile Include="ContextProperty.cs" />
+    <Compile Include="MessageExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBagHelper.cs" />
     <Compile Include="RequiredRuntimeAttribute.cs" />
