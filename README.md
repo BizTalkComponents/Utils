@@ -99,3 +99,51 @@ PropertyBagHelper.WriteAll(propertyBag, this);
 PropertyBagHelper.ReadAll(propertyBag, this);
 ```
 
+
+## Message helpers ##
+IBaseMessage extension methods for reading and manipulating the message using XPath.
+
+```c#
+//Select one value
+string xPath = "/root/element1[1]";
+string result = msg.Select(xPath);
+
+//Select multiple values
+string xPath1 = "/root/element1[1]";
+string xPath2 = "/root/element2[1]";
+Dictionary<string, string> results = msg.SelectMultiple(xPath1, xPath2);
+
+//Replace one or multiple values based on a single XPath
+string xPath = "/root/element[1]";
+string newValue = "newValue";
+msg.Replace(xPath, newValue);
+
+//Replace multiple values based on multiple XPaths
+string xPath1 = "/root/element1[1]";
+string xPath2 = "/root/element2[1]";
+string newValue1 = "newValue1";
+string newValue2 = "newValue2";
+
+var replacements = new Dictionary<string, string>();
+replacements.Add(xPath1, newValue1);
+replacements.Add(xPath2, newValue2);
+
+msg.ReplaceMultiple(replacements);
+
+//Do custom transformations based on multiple XPaths
+string xPath = "/root/element[1]";
+
+Func<string, string> increment = x =>
+{
+    int y = int.Parse(x);
+    y++;
+    return y.ToString();
+};
+
+var xPathToMutatorMap = new Dictionary<string, Func<string, string>>();
+xPathToMutatorMap.Add(xPath, increment);
+
+msg.Mutate(xPathToMutatorMap);
+```
+
+
