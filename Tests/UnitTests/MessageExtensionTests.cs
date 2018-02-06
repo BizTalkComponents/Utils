@@ -298,5 +298,95 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         }
 
         #endregion
+
+        #region FindReplace
+
+        [TestMethod]
+        public void FindReplace_ShouldReplace_WhenXPathAndFindMatches()
+        {
+            string xPath = "/root/element";
+            string find = "value";
+            string newValue = "newValue";
+
+            string inputXml =
+            @"<root>
+                <element>value</element>
+            </root>";
+
+            string expectedXml =
+            $@"<root>
+                <element>{newValue}</element>
+            </root>";
+
+            var msg = MessageHelper.Create(inputXml);
+
+            msg.FindReplace(xPath, newValue, find);
+
+            var resultXml = MessageHelper.ReadString(msg);
+            Assert.AreEqual(expectedXml, resultXml);
+        }
+
+        [TestMethod]
+        public void FindReplace_ShouldNotReplace_WhenXPathButNotFindMatches()
+        {
+            string xPath = "/root/element";
+            string find = "nomatch1";
+            string newValue = "newValue";
+
+            string inputXml =
+            @"<root>
+                <element>value</element>
+            </root>";
+
+            string expectedXml = inputXml;
+
+            var msg = MessageHelper.Create(inputXml);
+
+            msg.FindReplace(xPath, newValue, find);
+
+            var resultXml = MessageHelper.ReadString(msg);
+            Assert.AreEqual(expectedXml, resultXml);
+        }
+        #endregion
+
+        #region FindReplaceMultiple
+        [TestMethod]
+        public void FindReplaceMultiple_ShouldReplaceMultiple_WhenMultipleXPathsAndFindMatch()
+        {
+            string xPath1 = "/root/element1[1]";
+            string find1 = "value1";
+            string newValue1 = "newValue";
+            string xPath2 = "/root/element2[1]";
+            string find2 = "value2";
+            string newValue2 = "newValue";
+
+            string inputXml =
+            @"<root>
+                <element1>value1</element1>
+                <element2>value2</element2>
+            </root>";
+
+            string expectedXml =
+            $@"<root>
+                <element1>{newValue1}</element1>
+                <element2>{newValue2}</element2>
+            </root>";
+
+            var msg = MessageHelper.Create(inputXml);
+
+            var replacements = new Dictionary<string, KeyValuePair<string, string>>
+            {
+                [xPath1] = new KeyValuePair<string, string>(find1, newValue1),
+                [xPath2] = new KeyValuePair<string, string>(find2, newValue2),
+            };
+
+            msg.FindReplaceMultiple(replacements);
+
+            var resultXml = MessageHelper.ReadString(msg);
+            Assert.AreEqual(expectedXml, resultXml);
+        }
+
+        #endregion
+
     }
 }
