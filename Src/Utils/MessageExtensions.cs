@@ -72,8 +72,8 @@ namespace BizTalkComponents.Utils
             var xPathMutatorStream = new XPathMutatorStream(virtualStream, xPathCollection, valueMutator);
             pInMsg.BodyPart.Data = xPathMutatorStream;
 
-            void HandleXpathFound(int matchIdx, XPathExpression matchExpr, string origVal, ref string finalVal) 
-            { 
+            void HandleXpathFound(int matchIdx, XPathExpression matchExpr, string origVal, ref string finalVal)
+            {
                 var mutator = xPathToMutatorMap[matchExpr.XPath];
                 finalVal = mutator(origVal);
             }
@@ -85,6 +85,16 @@ namespace BizTalkComponents.Utils
             pInMsg.ReplaceMultiple(replacementMap);
         }
 
+        public static void FindReplace(this IBaseMessage pInMsg, string xPath, string replacement, string find)
+        {
+            var replacementMap = new Dictionary<string, KeyValuePair<string, string>>
+            {
+                [xPath] = new KeyValuePair<string, string>(find, replacement)
+            };
+
+            pInMsg.FindReplaceMultiple(replacementMap);
+        }
+
         public static void ReplaceMultiple(this IBaseMessage pInMsg, Dictionary<string, string> replacementMap)
         {
             var dict = new Dictionary<string, Func<string, string>>();
@@ -92,6 +102,21 @@ namespace BizTalkComponents.Utils
             foreach (var item in replacementMap)
             {
                 dict.Add(item.Key, x => item.Value);
+            }
+
+            pInMsg.Mutate(dict);
+        }
+
+        public static void FindReplaceMultiple(this IBaseMessage pInMsg, Dictionary<string, KeyValuePair<string, string>> replacementMap)
+        {
+            var dict = new Dictionary<string, Func<string, string>>();
+
+            foreach (var item in replacementMap)
+            {
+                dict.Add(item.Key, x =>
+                {
+                    return x.Replace(item.Value.Key, item.Value.Value);
+                });
             }
 
             pInMsg.Mutate(dict);
