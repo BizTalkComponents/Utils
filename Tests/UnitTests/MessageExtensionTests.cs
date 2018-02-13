@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.BizTalk.Message.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Winterdom.BizTalk.PipelineTesting;
 
@@ -8,25 +9,33 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
     [TestClass]
     public class MessageExtensionTests
     {
+        IBaseMessage msg;
+        SendPipelineWrapper pipeline;
+        string inputXml;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            inputXml =
+            @"<root>
+                <element1>value1</element1>
+                <element2>value2</element2>
+                <element3>value3</element3>
+            </root>";
+
+            msg = MessageHelper.CreateFromString(inputXml);
+            pipeline = PipelineFactory.CreateEmptySendPipeline();
+        }
+
         #region SelectMultiple
 
         [TestMethod]
         public void SelectMultiple_ShouldReturnValues_WhenXPathsMatch()
         {
             string xPath1 = "/root/element1[1]";
-            string xPath2 = "/root/element2[1]";
-
-            string inputXml =
-            @"<root>
-                <element1>value1</element1>
-                <element1>value2</element1>
-                <element2>value3</element2>
-            </root>";
-
+            string xPath2 = "/root/element3[1]";
             string expectedValue1 = "value1";
             string expectedValue2 = "value3";
-
-            var msg = MessageHelper.Create(inputXml);
 
             Dictionary<string, string> results = msg.SelectMultiple(xPath1, xPath2);
 
@@ -40,15 +49,6 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             string xPath1 = "/root/nomatch1[1]";
             string xPath2 = "/root/nomatch2[1]";
 
-            string inputXml =
-            @"<root>
-                <element1>value1</element1>
-                <element1>value2</element1>
-                <element2>value3</element2>
-            </root>";
-
-            var msg = MessageHelper.Create(inputXml);
-
             Dictionary<string, string> results = msg.SelectMultiple(xPath1, xPath2);
 
             Assert.AreEqual(0, results.Count);
@@ -58,18 +58,8 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         public void SelectMultiple_ShouldReturnValue_WhenOneXPathMatches()
         {
             string xPath1 = "/root/nomatch2[1]";
-            string xPath2 = "/root/element2[1]";
-
-            string inputXml =
-            @"<root>
-                <element1>value1</element1>
-                <element1>value2</element1>
-                <element2>value3</element2>
-            </root>";
-
+            string xPath2 = "/root/element3[1]";
             string expectedValue = "value3";
-
-            var msg = MessageHelper.Create(inputXml);
 
             Dictionary<string, string> results = msg.SelectMultiple(xPath1, xPath2);
 
@@ -83,16 +73,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         public void Select_ShouldReturnValue_WhenXPathMatches()
         {
             string xPath = "/root/element1[1]";
-
-            string inputXml =
-            @"<root>
-                <element1>value</element1>
-                <element1>value</element1>
-                <element2>value2</element2>
-            </root>";
-
-            string expectedValue = "value";
-            var msg = MessageHelper.Create(inputXml);
+            string expectedValue = "value1";
 
             string result = msg.Select(xPath);
 
@@ -103,14 +84,6 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         public void Select_ShouldReturnNull_WhenXPathDoesNotMatch()
         {
             string xPath = "/root/nomatch[1]";
-
-            string inputXml =
-            @"<root>
-                <element>value</element>
-                <element>value</element>
-            </root>";
-
-            var msg = MessageHelper.Create(inputXml);
 
             string result = msg.Select(xPath);
 
@@ -161,19 +134,10 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             string xPath2 = "/root/element2[1]";
             string newValue2 = "newValue";
 
-            string inputXml =
-            @"<root>
-                <element1>value</element1>
-                <element2>value</element2>
-            </root>";
+            string expectedXml = inputXml
+                .Replace("value1", newValue1)
+                .Replace("value2", newValue2);
 
-            string expectedXml =
-            $@"<root>
-                <element1>{newValue1}</element1>
-                <element2>{newValue2}</element2>
-            </root>";
-
-            var msg = MessageHelper.Create(inputXml);
             var replacements = new Dictionary<string, string>
             {
                 [xPath1] = newValue1,
@@ -194,19 +158,8 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             string xPath2 = "/root/element2[1]";
             string newValue2 = "newValue";
 
-            string inputXml =
-            @"<root>
-                <element1>value</element1>
-                <element2>value</element2>
-            </root>";
+            string expectedXml = inputXml.Replace("value2", newValue1);
 
-            string expectedXml =
-            $@"<root>
-                <element1>value</element1>
-                <element2>{newValue2}</element2>
-            </root>";
-
-            var msg = MessageHelper.Create(inputXml);
             var replacements = new Dictionary<string, string>
             {
                 [xPath1] = newValue1,
@@ -226,22 +179,10 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         [TestMethod]
         public void Replace_ShouldReplaceOne_WhenXPathMatchesOne()
         {
-            string xPath = "/root/element[1]";
+            string xPath = "/root/element1[1]";
             string newValue = "newValue";
 
-            string inputXml =
-            @"<root>
-                <element>value</element>
-                <element>value</element>
-            </root>";
-
-            string expectedXml =
-            $@"<root>
-                <element>{newValue}</element>
-                <element>value</element>
-            </root>";
-
-            var msg = MessageHelper.Create(inputXml);
+            string expectedXml = inputXml.Replace("value1", newValue);
 
             msg.Replace(xPath, newValue);
 
@@ -261,11 +202,8 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
                 <element>value</element>
             </root>";
 
-            string expectedXml =
-            $@"<root>
-                <element>{newValue}</element>
-                <element>{newValue}</element>
-            </root>";
+            string expectedXml = 
+                inputXml.Replace("value", newValue);
 
             var msg = MessageHelper.Create(inputXml);
 
@@ -281,15 +219,7 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             string xPath = "/root/nomatch";
             string newValue = "newValue";
 
-            string inputXml =
-            @"<root>
-                <element>value</element>
-                <element>value</element>
-            </root>";
-
             string expectedXml = inputXml;
-
-            var msg = MessageHelper.Create(inputXml);
 
             msg.Replace(xPath, newValue);
 
@@ -304,21 +234,10 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         [TestMethod]
         public void FindReplace_ShouldReplace_WhenXPathAndFindMatches()
         {
-            string xPath = "/root/element";
-            string find = "value";
+            string xPath = "/root/element1[1]";
+            string find = "value1";
             string newValue = "newValue";
-
-            string inputXml =
-            @"<root>
-                <element>value</element>
-            </root>";
-
-            string expectedXml =
-            $@"<root>
-                <element>{newValue}</element>
-            </root>";
-
-            var msg = MessageHelper.Create(inputXml);
+            string expectedXml = inputXml.Replace("value1", newValue);
 
             msg.FindReplace(xPath, newValue, find);
 
@@ -329,18 +248,11 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
         [TestMethod]
         public void FindReplace_ShouldNotReplace_WhenXPathButNotFindMatches()
         {
-            string xPath = "/root/element";
+            string xPath = "/root/element1[1]";
             string find = "nomatch1";
             string newValue = "newValue";
 
-            string inputXml =
-            @"<root>
-                <element>value</element>
-            </root>";
-
             string expectedXml = inputXml;
-
-            var msg = MessageHelper.Create(inputXml);
 
             msg.FindReplace(xPath, newValue, find);
 
@@ -360,17 +272,9 @@ namespace BizTalkComponents.Utils.Tests.UnitTests
             string find2 = "value2";
             string newValue2 = "newValue";
 
-            string inputXml =
-            @"<root>
-                <element1>value1</element1>
-                <element2>value2</element2>
-            </root>";
-
-            string expectedXml =
-            $@"<root>
-                <element1>{newValue1}</element1>
-                <element2>{newValue2}</element2>
-            </root>";
+            string expectedXml = inputXml
+                 .Replace("value1", newValue1)
+                 .Replace("value2", newValue2);
 
             var msg = MessageHelper.Create(inputXml);
 
