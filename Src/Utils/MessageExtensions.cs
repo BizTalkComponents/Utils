@@ -68,15 +68,16 @@ namespace BizTalkComponents.Utils
 
             Stream inboundStream = pInMsg.BodyPart.GetOriginalDataStream();
             var virtualStream = new VirtualStream(inboundStream);
-            var valueMutator = new ValueMutator(HandleXpathFound);
-            var xPathMutatorStream = new XPathMutatorStream(virtualStream, xPathCollection, valueMutator);
-            pInMsg.BodyPart.Data = xPathMutatorStream;
 
-            void HandleXpathFound(int matchIdx, XPathExpression matchExpr, string origVal, ref string finalVal)
+            ValueMutator valueMutator = delegate (int matchIdx, XPathExpression matchExpr,
+                string origVal, ref string finalVal)
             {
                 var mutator = xPathToMutatorMap[matchExpr.XPath];
                 finalVal = mutator(origVal);
-            }
+            };
+
+            var xPathMutatorStream = new XPathMutatorStream(virtualStream, xPathCollection, valueMutator);
+            pInMsg.BodyPart.Data = xPathMutatorStream;
         }
 
         public static void Replace(this IBaseMessage pInMsg, string xPath, string replacement)
