@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.BizTalk.Pipeline, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.BizTalk.Streaming, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="Winterdom.BizTalk.PipelineTesting">
@@ -57,6 +58,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MessageExtensionTests.cs" />
     <Compile Include="ContextExtensionTests.cs" />
     <Compile Include="ContextPropertiesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
